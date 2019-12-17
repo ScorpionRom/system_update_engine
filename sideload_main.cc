@@ -85,7 +85,7 @@ class SideloadDaemonState : public DaemonStateInterface,
       // Split the progress bar in two parts for the two stages DOWNLOADING and
       // FINALIZING.
       ReportStatus(base::StringPrintf("ui_print ======================="));
-      ReportStatus(base::StringPrintf("ui_print Flashing Dirty Unicorns"));
+      ReportStatus(base::StringPrintf("ui_print Flashing ScorpionROM   "));
       ReportStatus(base::StringPrintf("ui_print ======================="));
       ReportStatus(base::StringPrintf(
           "ui_print Step %d/3", status == UpdateStatus::DOWNLOADING ? 1 : 2));

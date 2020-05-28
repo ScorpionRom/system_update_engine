@@ -73,9 +73,9 @@ class SideloadDaemonState : public DaemonStateInterface,
                               status == UpdateStatus::VERIFYING || status == UpdateStatus::FINALIZING)) {
       // Split the progress bar in two parts for the two stages DOWNLOADING and
       // FINALIZING.
-      ReportStatus(base::StringPrintf("ui_print ======================="));
-      ReportStatus(base::StringPrintf("ui_print Flashing ScorpionROM   "));
-      ReportStatus(base::StringPrintf("ui_print ======================="));
+      ReportStatus(base::StringPrintf("ui_print ===================================="));
+      ReportStatus(base::StringPrintf("ui_print Staging the files for ScorpionROM..."));
+      ReportStatus(base::StringPrintf("ui_print ===================================="));
       ReportStatus(base::StringPrintf(
           "ui_print Step %d/3", status == UpdateStatus::DOWNLOADING ? 1 : 2));
       ReportStatus(base::StringPrintf("progress 0.3 0"));
@@ -84,10 +84,23 @@ class SideloadDaemonState : public DaemonStateInterface,
     if (status_ != status && (status == UpdateStatus::VERIFYING || status == UpdateStatus::FINALIZING)) {
       // Split the progress bar in two parts for the two stages DOWNLOADING and
       // FINALIZING.
-      ReportStatus(base::StringPrintf("ui_print ======================="));
-      ReportStatus(base::StringPrintf("ui_print Finalizing..."));
-      ReportStatus(base::StringPrintf("ui_print ======================="));
-       ReportStatus(base::StringPrintf(
+      ReportStatus(base::StringPrintf("ui_print "));
+      ReportStatus(base::StringPrintf("ui_print ======================"));
+      ReportStatus(base::StringPrintf("ui_print Thank You for Flashing"));
+      ReportStatus(base::StringPrintf("ui_print ======================"));
+      ReportStatus(base::StringPrintf("ui_print "));
+      ReportStatus(base::StringPrintf("ui_print *************************************"));
+      ReportStatus(base::StringPrintf("ui_print *  _____                 _          *"));
+      ReportStatus(base::StringPrintf("ui_print * |   __|___ ___ ___ ___|_|___ ___  *"));
+      ReportStatus(base::StringPrintf("ui_print * |__   |  _| . |  _| . | | . |   | *"));
+      ReportStatus(base::StringPrintf("ui_print * |_____|___|___|_| |  _|_|___|_|_| *"));
+      ReportStatus(base::StringPrintf("ui_print *                   |_|             *"));
+      ReportStatus(base::StringPrintf("ui_print *************************************"));
+      ReportStatus(base::StringPrintf("ui_print "));
+      ReportStatus(base::StringPrintf("ui_print =========================="));
+      ReportStatus(base::StringPrintf("ui_print Feel the Sting: Android 11"));
+      ReportStatus(base::StringPrintf("ui_print =========================="));
+      ReportStatus(base::StringPrintf(
            "ui_print Step %d/3", status == UpdateStatus::VERIFYING ? 2 : 3));
       ReportStatus(base::StringPrintf("progress 0.6 0"));
      }

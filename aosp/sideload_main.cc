@@ -70,24 +70,26 @@ class SideloadDaemonState : public DaemonStateInterface,
     UpdateStatus status = update_engine_status.status;
     double progress = update_engine_status.progress;
     if (status_ != status && (status == UpdateStatus::DOWNLOADING ||
-                              status == UpdateStatus::VERIFYING || status == UpdateStatus::FINALIZING)) {
+                              status == UpdateStatus::FINALIZING)) {
       // Split the progress bar in two parts for the two stages DOWNLOADING and
       // FINALIZING.
-      ReportStatus(base::StringPrintf("ui_print ===================================="));
-      ReportStatus(base::StringPrintf("ui_print Staging the files for ScorpionROM..."));
-      ReportStatus(base::StringPrintf("ui_print ===================================="));
+      ReportStatus(base::StringPrintf("ui_print ====================================="));
+      ReportStatus(base::StringPrintf("ui_print Flashing the files for ScorpionROM..."));
+      ReportStatus(base::StringPrintf("ui_print ====================================="));
       ReportStatus(base::StringPrintf(
-          "ui_print Step %d/3", status == UpdateStatus::DOWNLOADING ? 1 : 2));
-      ReportStatus(base::StringPrintf("progress 0.3 0"));
+          "ui_print %d/3", status == UpdateStatus::DOWNLOADING ? 1 : 2));
+      ReportStatus(base::StringPrintf("progress 0.5 0"));
     }
 
-    if (status_ != status && (status == UpdateStatus::VERIFYING || status == UpdateStatus::FINALIZING)) {
+    if (status_ != status && (status == UpdateStatus::FINALIZING)) {
       // Split the progress bar in two parts for the two stages DOWNLOADING and
       // FINALIZING.
       ReportStatus(base::StringPrintf("ui_print "));
-      ReportStatus(base::StringPrintf("ui_print ======================"));
-      ReportStatus(base::StringPrintf("ui_print Thank You for Flashing"));
-      ReportStatus(base::StringPrintf("ui_print ======================"));
+      ReportStatus(base::StringPrintf("ui_print =================="));
+      ReportStatus(base::StringPrintf("ui_print Flashing Complete!"));
+      ReportStatus(base::StringPrintf("ui_print =================="));
+      ReportStatus(base::StringPrintf("ui_print %d/3", status == UpdateStatus::FINALIZING ? 3 : 3));
+      ReportStatus(base::StringPrintf("progress 0.6 0"));
       ReportStatus(base::StringPrintf("ui_print "));
       ReportStatus(base::StringPrintf("ui_print *************************************"));
       ReportStatus(base::StringPrintf("ui_print *  _____                 _          *"));
@@ -100,9 +102,6 @@ class SideloadDaemonState : public DaemonStateInterface,
       ReportStatus(base::StringPrintf("ui_print =========================="));
       ReportStatus(base::StringPrintf("ui_print Feel the Sting: Android 12"));
       ReportStatus(base::StringPrintf("ui_print =========================="));
-      ReportStatus(base::StringPrintf(
-           "ui_print Step %d/3", status == UpdateStatus::VERIFYING ? 2 : 3));
-      ReportStatus(base::StringPrintf("progress 0.6 0"));
      }
 
     progress_ = progress;
